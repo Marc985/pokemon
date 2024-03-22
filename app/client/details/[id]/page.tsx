@@ -34,7 +34,7 @@ export default function PersoDetails(){
     getDetails()
     },[])
     return(
-        <div>
+        <div className="border rounded-sm p-3 w-48 flex flex-col items-center mx-auto mt-11">
             <img src={details?.img} alt={details?.name}/>
             <h1>name:{details?.name}</h1>
             <p>Weight:{details?.weight}</p>
