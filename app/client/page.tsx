@@ -69,8 +69,8 @@ export default function Pokemon() {
                 <button onClick={handleNext}>Suivant</button>
             </div>
             <ul className='grid grid-cols-5 gap-3 mx-auto mt-20'>
-                {Array.isArray(data) && data.map((item: Pokemon, index: number) => (
-                    <div className='flex flex-col items-center gap-5 border rounded-md p-3 hover:bg-slate-200' key={index}>
+                {Array.isArray(data) && data.map((item: Pokemon) => (
+                    <div className='flex flex-col items-center gap-5 border rounded-md p-3 hover:bg-slate-200' key={item.id}>
                         <img src={item.img} alt="" />
                         <li>{item.name}</li>
 
