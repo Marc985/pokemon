@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { it } from 'node:test';
+
 type Pokemon={
+    id:number
     name:string
     url:string
     img:string
@@ -33,7 +36,8 @@ export default function Pokemon() {
     const detailedData: Pokemon[] = await Promise.all(
         data.results.map(async(item:Pokemon)=>{
             const details=await getDetails(item.url)
-            return {name:item.name,url:item.url,img:details.sprites.front_default}
+            const id=details.id
+            return {id:id,name:item.name,url:item.url,img:details.sprites.front_default}
         })
       )
         console.log(detailedData);
@@ -70,7 +74,7 @@ export default function Pokemon() {
                         <img src={item.img} alt="" />
                         <li>{item.name}</li>
 
-                        <Link href={``}><button className='bg-black rounded-lg p-4 text-white'>See details</button></Link>
+                        <Link href={`/client/details/${item.id}`}><button className='bg-black rounded-lg p-4 text-white'>See details</button></Link>
                     </div>
                 ))}
             </ul>
